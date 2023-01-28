@@ -30,7 +30,7 @@ export class ListTasks {
   addTask = () => {
     const list = document.querySelector('.list');
     const newItem = document.querySelector('#new-item');
-
+    console.log(this.id);
     this.id += 1;
     this.taskListArr.push({ index: this.id, completed: false, description: newItem.value });
     const newTask = document.createElement('div');
@@ -172,27 +172,28 @@ export class ListTasks {
   }
 
   initClearEvent = () => {
-    document.querySelector('#clearAll').addEventListener('click',
-      () => {
-        const newArray = [];
-
-        for (let i = 0; i < this.taskListArr.length; i += 1) {
-          if (this.taskListArr[i].completed === false) {
-            newArray.push(this.taskListArr[i]);
-          }
-        }
-        this.taskListArr = newArray;
-        this.id = this.taskListArr.length - 1;
-
-        
-        this.pushLocalStorage(this.taskListArr);
-        
-
-        document.querySelector('.list').innerHTML = '';
-        this.printList();
-        this.initEvents();
-      });
+    document.querySelector('#clearAll').addEventListener('click',this.clearAll);
   };
+
+  clearAll = () => {
+    const newArray = [];
+
+    for (let i = 0; i < this.taskListArr.length; i += 1) {
+      if (this.taskListArr[i].completed === false) {
+        newArray.push(this.taskListArr[i]);
+      }
+    }
+    this.taskListArr = newArray;
+    this.id = this.taskListArr.length - 1;
+
+    
+    this.pushLocalStorage(this.taskListArr);
+    
+
+    document.querySelector('.list').innerHTML = '';
+    this.printList();
+    this.initEvents();
+  }
 
   addCheckEvent = (index) => {
     const checkItem = document.querySelector(`#check-${index}`);
