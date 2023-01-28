@@ -42,8 +42,8 @@ export class ListTasks {
     <li class="item" id="item-${i}">
         <input type="checkbox" id = "check-${i}" >
 
-        <label for="check-${i}">
-            <input type="text" id="label-${i}" value="${this.taskListArr[i].description}">    
+        <label for="check-${i}" class="label-container">
+            <input type="text" id="label-${i}" value="${this.taskListArr[i].description}" size="300">
         </label>
 
         <div type ="button" id="edit-${i}""> 
@@ -120,14 +120,14 @@ export class ListTasks {
         `;
       if (toDoList[i].completed === true) {
         str += `
-        <input type="checkbox" id = "check-${i}" checked>
-            <label for="check-${i}">
+        <input type="checkbox" id = "check-${i}" checked>            
+            <label for="check-${i}" class="label-container">
         <input type="text" id="label-${i}" value="${toDoList[i].description}" style="text-decoration: line-through;">
         </label>`;
       } else {
         str += `
         <input type="checkbox" id = "check-${i}">
-        <label for="check-${i}">
+        <label for="check-${i}" class="label-container">
             <input type="text" id="label-${i}" value="${toDoList[i].description}" checked>
         </label> `;
       }
