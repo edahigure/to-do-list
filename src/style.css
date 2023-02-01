@@ -51,12 +51,18 @@ body {
 
 [id^="label"] {
   border-style: none;
+  width: 100%;
 }
 
 [id^="label"]:focus {
   outline: none;
+  width: 100%;
 }
 
 [id^="trash"] {
   display: none;
+}
+
+.label-container {
+  width: 100%;
 }
